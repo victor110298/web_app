@@ -11,13 +11,15 @@ import static java.util.stream.Collectors.toList;
 @Component
 public class UserMapper {
     public User mapUserEntityToUser(UserEntity entity) {
-        return new User()
+        User user = new User();
+        user
                 .setId(entity.getId())
                 .setEmail(entity.getEmail())
                 .setPassword(entity.getPassword())
                 .setFirstName(entity.getFirstName())
                 .setLastName(entity.getLastName())
                 .setRole(entity.getRole());
+        return user;
     }
 
     public List<User> mapUserEntitiesToUsers(List<UserEntity> entities) {

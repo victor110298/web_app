@@ -31,7 +31,7 @@ public class UserService implements BaseService<UserEntity> {
 
     @Override
     public UserEntity findOneById(Long id)  {
-        return repository.findById(id).orElseThrow(() -> new UserNotFoundException());
+        return repository.findById(id).orElseThrow(UserNotFoundException::new);
     }
 
     public UserEntity findOneByEmail(String email) {

@@ -61,8 +61,10 @@ public class ManufacturerController {
     @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     public ResponseEntity<Manufacturer> getProducer(@PathVariable("id") Long id) {
         Manufacturer manufacturer = (Manufacturer) manufacturerService.findOneById(id);
-        if (manufacturer == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        else
+        if (manufacturer == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
             return new ResponseEntity<>(manufacturer, HttpStatus.OK);
+        }
     }
 }

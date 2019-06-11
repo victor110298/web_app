@@ -20,7 +20,6 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-
 @Accessors(chain = true)
 @Table(name = "roles")
 public class RoleEntity {

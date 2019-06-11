@@ -56,9 +56,10 @@ public class UserController {
     public ResponseEntity<User> getUser(@PathVariable("id") Long id) {
 
         User user = (User) service.findOneById(id);
-        if (user == null)
+        if (user == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        else
+        } else {
             return new ResponseEntity<>(user, HttpStatus.OK);
+        }
     }
 }

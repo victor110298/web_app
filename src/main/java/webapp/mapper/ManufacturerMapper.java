@@ -9,20 +9,22 @@ import java.util.stream.Collectors;
 
 @Component
 public class ManufacturerMapper {
-    public Manufacturer mapManufacturerEntityToManufacturer(ManufacturerEntity entity){
-        return new Manufacturer()
+    public Manufacturer mapManufacturerEntityToManufacturer(ManufacturerEntity entity) {
+        Manufacturer manufacturer = new Manufacturer();
+        manufacturer
                 .setId(entity.getId())
                 .setName(entity.getName())
                 .setProducts(entity.getProducts());
+        return manufacturer;
     }
 
-    public List<Manufacturer> mapManufacturerEntitiesToManufacturers(List<ManufacturerEntity> entities){
+    public List<Manufacturer> mapManufacturerEntitiesToManufacturers(List<ManufacturerEntity> entities) {
         return entities.stream()
                 .map(this::mapManufacturerEntityToManufacturer)
                 .collect(Collectors.toList());
     }
 
-    public ManufacturerEntity mapManufacturerToManufacturerEntity(Manufacturer manufacturer){
+    public ManufacturerEntity mapManufacturerToManufacturerEntity(Manufacturer manufacturer) {
         ManufacturerEntity entity = new ManufacturerEntity()
                 .setName(manufacturer.getName())
                 .setProducts(manufacturer.getProducts());

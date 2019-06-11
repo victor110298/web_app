@@ -14,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class ManufacturerService implements BaseService<ManufacturerEntity> {
     private final ManufacturerRepository repository;
-    ManufacturerMapper mapper=new ManufacturerMapper();
+    ManufacturerMapper mapper = new ManufacturerMapper();
 
     @Override
     public void createOne(ManufacturerEntity entity) {
@@ -32,8 +32,8 @@ public class ManufacturerService implements BaseService<ManufacturerEntity> {
     }
 
     @Override
-    public ManufacturerEntity findOneById(Long id)  {
-        return repository.findById(id).orElseThrow(() -> new ManufacturerNotFoundException());
+    public ManufacturerEntity findOneById(Long id) {
+        return repository.findById(id).orElseThrow(ManufacturerNotFoundException::new);
     }
 
     @Override

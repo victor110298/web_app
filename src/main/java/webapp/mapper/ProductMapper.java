@@ -11,11 +11,13 @@ import static java.util.stream.Collectors.toList;
 @Component
 public class ProductMapper {
     public Product mapProductEntityToProduct(ProductEntity entity){
-        return new Product()
+        Product product=new Product();
+        product
                 .setId(entity.getId())
                 .setName(entity.getName())
                 .setPrice(entity.getPrice())
                 .setManufacturer(entity.getManufacturer());
+        return product;
     }
 
     public List<Product> mapProductEntitiesToProducts(List<ProductEntity> entities){
