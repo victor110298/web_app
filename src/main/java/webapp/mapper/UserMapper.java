@@ -1,0 +1,41 @@
+package webapp.mapper;
+
+import webapp.dto.User;
+import webapp.entity.UserEntity;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+
+import static java.util.stream.Collectors.toList;
+
+@Component
+public class UserMapper {
+    public User mapUserEntityToUser(UserEntity entity) {
+        User user = new User();
+        user
+                .setId(entity.getId())
+                .setEmail(entity.getEmail())
+                .setPassword(entity.getPassword())
+                .setFirstName(entity.getFirstName())
+                .setLastName(entity.getLastName())
+                .setRole(entity.getRole());
+        return user;
+    }
+
+    public List<User> mapUserEntitiesToUsers(List<UserEntity> entities) {
+        return entities.stream()
+                .map(this::mapUserEntityToUser)
+                .collect(toList());
+    }
+
+    public UserEntity mapUserToUserEntity(User user) {
+        UserEntity entity = new UserEntity()
+                .setEmail(user.getEmail())
+                .setPassword(user.getPassword())
+                .setFirstName(user.getFirstName())
+                .setLastName(user.getLastName())
+                .setRole(user.getRole());
+        entity.setId(user.getId());
+        return entity;
+    }
+}
